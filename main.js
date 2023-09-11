@@ -13,18 +13,19 @@ depositBtn.addEventListener('click', function() {
     const depositAmount = document.getElementById('depositAmount').value;
     const depositNumber = parseFloat(depositAmount);
 
-    const currentDeposit = document.getElementById('currentDeposit').innerText;
-    const currentDepositNumber = parseFloat(currentDeposit);
-    const totalDeposit = depositNumber + currentDepositNumber;
-    document.getElementById('currentDeposit').innerText = totalDeposit;
+    updateSpanText('currentBalance', depositNumber)
+    updateSpanText('currentDeposit', depositNumber)
 
-    const currentBalance = document.getElementById('currentBalance').innerText;
-    const currentBalanceNumber = parseFloat(currentBalance);
-    totalBalance = depositNumber + currentBalanceNumber;
-    document.getElementById('currentBalance').innerText = totalBalance;
-    
-    document.getElementById('depositAmount').value = ""
-})  
+    document.getElementById('depositAmount').value = ""  
+})
+
+
+function updateSpanText(id, depositNumber) {
+    const current = document.getElementById(id).innerText;
+    const currentNumber = parseFloat(current);
+    totalAmount = depositNumber + currentNumber;
+    document.getElementById(id).innerText = totalAmount;
+}
 
 
 // withdraw button event handler
