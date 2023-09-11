@@ -10,8 +10,8 @@ loginBtn.addEventListener('click', function() {
 // deposit button event handler
 const depositBtn = document.getElementById('addDeposit');
 depositBtn.addEventListener('click', function() {
-    const depositAmount = document.getElementById('depositAmount').value;
-    const depositNumber = parseFloat(depositAmount);
+
+    const depositNumber = getInputNumber('depositAmount')
 
     updateSpanText('currentBalance', depositNumber)
     updateSpanText('currentDeposit', depositNumber)
@@ -20,6 +20,15 @@ depositBtn.addEventListener('click', function() {
 })
 
 
+// withdraw button event handler
+const withdrawBtn = document.getElementById('addWithdraw');
+withdrawBtn.addEventListener('click', function() {
+
+    const withdrawNumber = getInputNumber('withdrawAmount')
+
+    
+})
+
 function updateSpanText(id, depositNumber) {
     const current = document.getElementById(id).innerText;
     const currentNumber = parseFloat(current);
@@ -27,5 +36,8 @@ function updateSpanText(id, depositNumber) {
     document.getElementById(id).innerText = totalAmount;
 }
 
-
-// withdraw button event handler
+function getInputNumber(id) {
+    const amount = document.getElementById(id).value;
+    const amountNumber = parseFloat(amount);
+    return amountNumber;
+}
